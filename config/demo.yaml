@@ -1,0 +1,32 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+# TODO: Must fix it!!!!!!
+parameters:
+  consumer_key: 'xxx'
+  consumer_secret: 'xxx'
+  oauth_token: 'xxx'
+  oauth_token_secret: 'xxx'
+
+services:
+    twitter:
+      class: App\Service\TwitterCrawler
+      autowire: false
+      public: false
+      arguments:
+        - '%consumer_key%'
+        - '%consumer_secret%'
+        - '%oauth_token%'
+        - '%oauth_token_secret%'
+
+    icndb:
+      class: App\Service\ICNDBCrawler
+      autowire: false
+      public: false
+
+    demo:
+      class: App\Service\Demo
+      autowire: false
+      public: true
+      arguments:
+        - '@twitter'
+        - '@icndb'

@@ -1,0 +1,13 @@
+index:
+    path: /{handle1}/{handle2}
+    controller: App\Controller\DemoController::index
+#    requirements:
+#      handle1: '\s+'
+#      handle2: '\s+'
+index_mod:
+    path: /{handle1}/{handle2}/{mod}
+    controller: App\Controller\DemoController::index
+#    requirements:
+#      handle1: '\s+'
+#      handle2: '\s+'
+#      mod: '\s+'

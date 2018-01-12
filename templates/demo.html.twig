@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <style type="text/css">
+        table {
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+    Handle1: {{ handle1 }} <br/>
+    handle2: {{ handle2 }} <br/>
+    mod: {{ mod }} <br/><br/>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Number</th>
+            <th>Source</th>
+            <th>Time</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in result %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.source }}</td>
+                <td>{% if item.source != 'icndb' %}{{ item.created_at }}{% else %} - {% endif %}</td>
+                <td>{{ item.message }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
